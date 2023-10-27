@@ -1,0 +1,122 @@
+CREATE TABLE teacher (
+    teacher_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    teacher_name VARCHAR(255),
+    subject VARCHAR(255)
+);
+
+CREATE TABLE student (
+    student_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    student_name VARCHAR(255),
+    grade VARCHAR(10),
+    teacher_id INT,
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
+);
+
+INSERT INTO teacher (teacher_id, teacher_name, subject)
+VALUES (1, 'Miss Ayesha', 'English'),
+       (2, 'Sir Arsalan', 'MYSQL'),
+       (3, 'Miss Nageen Shah', 'Maths'),
+       (4, 'Sir Javed', 'Physics'),
+       (5, 'Sir Sheeraz', 'Maths'),
+       (6, 'Sir Abdul Hai', 'Chemistry');
+
+INSERT INTO student (student_id, student_name, grade, teacher_id)
+VALUES (101, 'Sana', 'A', 1),
+       (102, 'Misbah', 'B', 2),
+       (103, 'Yasmeen', 'A', 3),
+       (104, 'Jhanzaib', 'A', 4),
+       (105, 'Humair', 'C', 5),
+       (106, 'Salman', 'B', 6);
+
+SELECT *
+FROM teacher
+INNER JOIN student ON teacher.teacher_id = student.teacher_id;
+
+SELECT *
+FROM teacher
+RIGHT JOIN student ON teacher.teacher_id = student.teacher_id;
+
+SELECT *
+FROM teacher
+LEFT JOIN student ON teacher.teacher_id = student.teacher_id;
+==============================================================================================================================================
+
+SELECT *
+FROM table1
+FULL JOIN table2
+ON table1.column = table2.column;
+Here's a step-by-step breakdown:
+
+SELECT * - This selects all columns from both tables.
+
+FROM table1 - Specifies the first table to be included in the join.
+
+FULL JOIN table2 - Specifies the second table to be included in the join using a full join.
+
+ON table1.column = table2.column - Specifies the condition for the join. It specifies the common column(s) on which the tables are joined.
+----------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT Customers.customer_id, Customers.customer_name, Orders.order_id
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+
+An INNER JOIN is a type of SQL (Structured Query Language) join used to combine rows from two or more tables based on a related column between them. The resulting table will contain only the rows that have matching values in both tables.
+
+Here's an example of how to use INNER JOIN in SQL:
+
+Let's say we have two tables: "Customers" and "Orders". Each customer can place multiple orders, and there is a common field "customer_id" that links the two tables.
+
+sql
+Copy code
+SELECT Customers.customer_id, Customers.customer_name, Orders.order_id
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+In this example:
+
+We're selecting the customer ID and customer name from the "Customers" table, and the order ID from the "Orders" table.
+We use INNER JOIN to combine the two tables based on the "customer_id" column.
+The result will include only rows where there is a matching customer ID in both tables.
+You can customize the SELECT statement and the columns you want to retrieve based on your specific use case. The INNER JOIN condition is crucial in connecting the related data from different tables.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT TableA.column1, TableB.column2
+FROM TableA
+RIGHT JOIN TableB ON TableA.id = TableB.id;
+
+---------------Inner Join:---------------------------------------------------------------------------------------
+An inner join retrieves records that have matching values in both tables.
+sql
+Copy code
+SELECT *
+FROM TableA
+INNER JOIN TableB ON TableA.id = TableB.id;
+
+------------------Left Join:-----------------------------------------------------------------------------------------
+A left join retrieves all records from the left table (TableA), and the matched records from the right table (TableB).
+sql
+Copy code
+SELECT *
+FROM TableA
+LEFT JOIN TableB ON TableA.id = TableB.id;
+
+---------------------Right Join:---------------------------------------------------------------------------------------
+A right join retrieves all records from the right table (TableB), and the matched records from the left table (TableA).
+sql
+Copy code
+SELECT *
+FROM TableA
+RIGHT JOIN TableB ON TableA.id = TableB.id;
+
+--------------------------Full Outer Join:-----------------------------------------------------------------------------
+A full outer join retrieves records when there is a match in either the left table (TableA) or the right table (TableB).
+sql
+Copy code
+SELECT *
+FROM TableA
+FULL OUTER JOIN TableB ON TableA.id = TableB.id;
+Replace TableA and TableB with your actual table names and adjust the join condition (ON) based on the columns you want to join on 
+
+(e.g., TableA.id = TableB.id). Adjust the columns you want to select (SELECT * or specific column names) based on your requirements.

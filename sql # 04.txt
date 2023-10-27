@@ -1,0 +1,24 @@
+CREATE DATABASE abc;
+USE abc;
+
+
+
+
+CREATE TABLE empolyees (
+ID  INT primary KEY NOT NULL auto_increment,
+NAME VARCHAR(250),
+SALARY INT 
+);
+
+SELECT * FROM empolyees ;
+
+INSERT INTO empolyees VALUES (1, "Saba", 50,000);
+INSERT INTO empolyees VALUES (2, "Salman", 30,000);
+INSERT INTO empolyees VALUES (3, "Habib khan", 50,000);
+INSERT INTO empolyees VALUES (4, "Rohaan", 20,000);
+INSERT INTO empolyees VALUES (5, "Jannat", 15,000);
+INSERT INTO empolyees VALUES (6, "Kainat", 25,000);
+INSERT INTO empolyees VALUES (7, "Ammar", 28,000);
+INSERT INTO empolyees VALUES (8, "Fiza", 22,000);
+INSERT INTO empolyees VALUES (9, "Saif Uddin", 18,000);
+INSERT INTO empolyees VALUES (null, "Anny", 40,000);

@@ -1,0 +1,65 @@
+1. Creating a Stored Procedure for Selecting Records:
+DELIMITER //
+
+CREATE PROCEDURE SelectRecords()
+BEGIN
+    SELECT * FROM your_table_name;
+END //
+
+DELIMITER ;
+
+2. Creating a Stored Procedure for Inserting Records:
+
+DELIMITER //
+
+CREATE PROCEDURE InsertRecord(IN param1 datatype1, IN param2 datatype2, ...)
+BEGIN
+    INSERT INTO your_table_name (column1, column2, ...)
+    VALUES (param1, param2, ...);
+END //
+
+DELIMITER ;
+
+3. Creating a Stored Procedure for Updating Records
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateRecord(IN param_id INT, IN new_value datatype)
+BEGIN
+    UPDATE your_table_name
+    SET column_to_update = new_value
+    WHERE id_column = param_id;
+END //
+
+DELIMITER ;
+
+4. Creating a Stored Procedure for Deleting Records:
+
+DELIMITER //
+
+CREATE PROCEDURE DeleteRecord(IN param_id INT)
+BEGIN
+    DELETE FROM your_table_name
+    WHERE id_column = param_id;
+END //
+
+DELIMITER ;
+
+How to Use the Stored Procedures:
+To call these stored procedures, you can use the following syntax:
+
+For Selecting Records:
+
+CALL SelectRecords();
+
+For Inserting Records:
+
+CALL InsertRecord(value1, value2, ...);
+
+For Updating Records:
+
+CALL UpdateRecord(id_value, new_value);
+
+For Deleting Records:
+
+CALL DeleteRecord(id_value);
